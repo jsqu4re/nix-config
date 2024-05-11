@@ -60,9 +60,7 @@
   programs.hyprland = {
     enable = true;
     xwayland.enable = false;
-  }
-
-  programs.home-manager.enable = true;
+  };
 
   # Configure keymap in X11
   services.xserver = {
