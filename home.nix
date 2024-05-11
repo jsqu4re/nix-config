@@ -31,7 +31,7 @@
     settings = {
       # default variables
       "$mainMod" = "SUPER";
-      "$terminal" = "${pkgs.lib.getExe config.programs.kitty.package}";
+      "$terminal" = "${pkgs.lib.getExe config.programs.alacritty.package}";
       "$editor" = "${pkgs.lib.getExe pkgs.neovim-unwrapped}";
       "$browser" = "${pkgs.lib.getExe pkgs.floorp}";
       "$launcher" = "ags -r 'toggleStartMenu()'";
@@ -65,9 +65,9 @@
         "nofocus, class:^(steam)$, title:^()$"
 
         # flameshot
-        "float, title:^(flameshot)"
-        "move 0 0, title:^(flameshot)"
-        "suppressevent fullscreen, title:^(flameshot)"
+        # "float, title:^(flameshot)"
+        # "move 0 0, title:^(flameshot)"
+        # "suppressevent fullscreen, title:^(flameshot)"
 
         # satty
         "noanim, class:(com.gabm.satty)"
@@ -119,7 +119,7 @@
           enabled = "true";
           size = "8";
           passes = "4";
-          popups = "true";
+          # popups = "true";
         };
       };
 
@@ -136,10 +136,10 @@
         "$mainMod, e, exec, $fileManager"
 
         # toggle floating window
-        "$mainMod, v, togglefloating"
+        "$mainMod, SPACE, togglefloating"
 
         # close active window
-        "alt, f4, killactive"
+        "$mainMod SHIFT, q, killactive"
 
         # close hyprland session
         "$mainMod, m, exit"
@@ -175,6 +175,10 @@
         # scroll through workspaces
         "$mainMod, mouse_down, workspace, e+1"
         "$mainMod, mouse_up, workspace, e-1"
+        
+        # scroll through workspaces
+        "CTRL ALT, right, workspace, e+1"
+        "CTRL ALT, left, workspace, e-1"
 
         # obs studio pass
         "$mainMod, F10, pass, ^(com\.obsproject\.Studio)$"
@@ -203,6 +207,11 @@
         ", XF86MonBrightnessUp, exec, brightnessctl set +5%"
       ];
     };
+  };
+  
+  programs.rofi = {
+    enable = true;
+    package = pkgs.rofi-wayland;
   };
 
   # Packages that should be installed to the user profile.
