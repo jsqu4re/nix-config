@@ -31,11 +31,11 @@
     settings = {
       # default variables
       "$mainMod" = "SUPER";
-      "$terminal" = "${lib.getExe config.programs.kitty.package}";
-      "$editor" = "${lib.getExe pkgs.neovim-unwrapped}";
-      "$browser" = "${lib.getExe pkgs.floorp}";
+      "$terminal" = "${pkgs.lib.getExe config.programs.kitty.package}";
+      "$editor" = "${pkgs.lib.getExe pkgs.neovim-unwrapped}";
+      "$browser" = "${pkgs.lib.getExe pkgs.floorp}";
       "$launcher" = "ags -r 'toggleStartMenu()'";
-      "$fileManager" = "${lib.getExe pkgs.cinnamon.nemo-with-extensions}";
+      "$fileManager" = "${pkgs.lib.getExe pkgs.cinnamon.nemo-with-extensions}";
 
       env = [
         # use igpu for hyprland
@@ -45,7 +45,7 @@
         "XDG_CURRENT_DESKTOP,Hyprland"
         "XDG_SESSION_TYPE,wayland"
         "XDG_SESSION_DESKTOP,Hyprland"
-        "XDG_SCREENSHOTS_DIR,${config.screenshotsDir}"
+        # "XDG_SCREENSHOTS_DIR,${config.screenshotsDir}"
 
         # qt
         "QT_AUTO_SCREEN_SCALE_FACTOR,1"
