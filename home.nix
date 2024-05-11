@@ -21,8 +21,8 @@
 
   # set cursor size and dpi for 4k monitor
   xresources.properties = {
-    "Xcursor.size" = 16;
-    "Xft.dpi" = 172;
+    "Xcursor.size" = 24;
+    "Xft.dpi" = 200;
   };
 
   wayland.windowManager.hyprland = {
@@ -40,6 +40,7 @@
       env = [
         # use igpu for hyprland
         # "WLR_DRM_DEVICES,/dev/dri/card1"
+        "WLR_NO_HARDWARE_CURSORS,1"
 
         # xdg
         "XDG_CURRENT_DESKTOP,Hyprland"
@@ -177,8 +178,8 @@
         "$mainMod, mouse_up, workspace, e-1"
         
         # scroll through workspaces
-        "CTRL ALT, right, workspace, e+1"
-        "CTRL ALT, left, workspace, e-1"
+        "CTRL $mainMod, right, workspace, e+1"
+        "CTRL $mainMod, left, workspace, e-1"
 
         # obs studio pass
         "$mainMod, F10, pass, ^(com\.obsproject\.Studio)$"
@@ -222,6 +223,7 @@
 
     neofetch
     nnn # terminal file manager
+    ncdu
 
     # archives
     zip
