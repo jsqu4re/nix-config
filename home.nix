@@ -107,7 +107,7 @@
       };
 
       decoration = {
-        rounding = "8";
+        rounding = "10";
 
         drop_shadow = "false";
         # shadow_range = "4";
@@ -142,8 +142,10 @@
         # close active window
         "$mainMod SHIFT, q, killactive"
 
+        "$mainMod, f, fullscreen"
+
         # close hyprland session
-        "$mainMod, m, exit"
+        "$mainMod SHIFT, e, exit"
 
         # move focus
         "$mainMod, left, movefocus, l"
@@ -215,6 +217,16 @@
     package = pkgs.rofi-wayland;
   };
 
+  # programs.eww = {
+  #   configDir = ./eww/config;
+  #   enable = true;
+  # };
+
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
+
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
     wl-clipboard
@@ -224,6 +236,7 @@
     neofetch
     nnn # terminal file manager
     ncdu
+    tldr
 
     # archives
     zip
