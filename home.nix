@@ -244,7 +244,127 @@
 
   programs.waybar = {
     enable = true;
-    # systemd.enable = true;
+    settings = {
+      mainBar = {
+        layer = "top";
+        position = "top";
+        height = 10;
+        modules-left = ["hyprland/workspaces" "pulseaudio" "cpu" "memory" "disk"];
+        modules-center = ["hyprland/window"];
+        modules-right = ["clock" "tray"];
+      };
+    };
+    # font-family: Source Code Pro;
+    # #workspaces button {
+    #   padding: 0 5px;
+    # }
+    style = ''
+      * {
+        border: none;
+        border-radius: 0;
+        font-size: 14px;
+      }
+      window#waybar {
+        background: transparent;
+        color: #${color.foreground};
+      }
+
+      #workspaces button {
+        padding-left: 10px;
+        padding-right: 10px;
+        /*padding-top: 5px;
+        padding-bottom: 5px;*/
+
+        background-color: #${color.background};
+        color: inherit;
+        font-weight: 600;
+        border-top: 4px solid transparent;
+        border-bottom: 3px solid transparent;
+        border-left: 2px solid #${color.yellow};
+      }
+
+      #workspaces button:hover {
+        background: #${color.black};
+        box-shadow: inherit;
+        text-shadow: inherit;
+        border-bottom: 3px solid #${color.yellow};
+        border-top: 3px solid #${color.yellow};
+      }
+
+      #workspaces button.focused {
+        background: #${color.green};
+
+        border-top: 3px solid #${color.cyan};
+        border-bottom: 3px solid #${color.cyan};
+        border-left: 2px solid #${color.cyan};
+
+        color: #${color.cyan};
+      }
+
+      #workspaces button.active {
+        background: #${color.yellow};
+        color: #${color.black};
+      }
+
+      #workspaces button:first-child {
+        border-left: 0;
+      }
+      #workspaces button.focused + button {
+        border-left: none;
+      }
+
+      #workspaces button.focused:first-child {
+        border-left: none;
+      }
+
+      #workspaces button.focused:last-child {
+        border-right: none;
+      }
+
+      #workspaces button.urgent {
+        background-color: #${color.red};
+      }
+
+      #window, #disk, #mpd, #pulseaudio, #network, #cpu, #memory, #temperature, #clock {
+        padding-left: 8px;
+        padding-right: 8px;
+        /*
+        padding-top: 5px;
+        padding-bottom: 5px;
+        */
+
+        background-color: #${color.background};
+        color: inherit;
+        font-weight: 600;
+        border-top: 4px solid transparent;
+        border-bottom: 3px solid transparent;
+        border-left: 2px solid #${color.cyan};
+      }
+
+      #window, #disk {
+        border-right: 2px solid #${color.cyan};
+      }
+
+      #tray {
+        padding-left: 8px;
+        padding-right:8px;
+        min-width: 40px;
+        border-left: 2px dashed #${color.cyan};
+        font-size: 20px;
+      }
+
+      #clock {
+        font-size: 18px;
+      }
+
+      @keyframes blink {
+        to {
+            background-color: #ffffff;
+            color: black;
+        }
+      }
+    '';
+    systemd.enable = true;
   };
 
   programs.direnv = {
