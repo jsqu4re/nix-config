@@ -1,5 +1,14 @@
 { config, pkgs, ... }:
-
+  let
+    gatito.black = "252B2E";
+    gatito.gray = "D4D4D4";
+    gatito.red = "E15A60";
+    gatito.green = "99C794";
+    gatito.yellow = "FAC863";
+    gatito.blue = "6699CC";
+    gatito.purple = "C594C5";
+    gatito.turquoise = "5FB3B3";
+  in 
 {
   home.username = "jsqu4re";
   home.homeDirectory = "/home/jsqu4re";
@@ -34,7 +43,7 @@
       "$terminal" = "${pkgs.lib.getExe config.programs.alacritty.package}";
       "$editor" = "${pkgs.lib.getExe pkgs.neovim-unwrapped}";
       "$browser" = "${pkgs.lib.getExe pkgs.floorp}";
-      "$launcher" = "ags -r 'toggleStartMenu()'";
+      "$launcher" = "${pkgs.lib.getExe pkgs.fuzzel} -b ${gatito.black}F5 -t ${gatito.gray}FF -s ${gatito.red}AF -m ${gatito.yellow}90 -S ${gatito.gray}FF -M ${gatito.green}FF -r 40 -B 20 -C 252B2EF5";
       "$fileManager" = "${pkgs.lib.getExe pkgs.cinnamon.nemo-with-extensions}";
 
       env = [
@@ -237,6 +246,8 @@
     wl-clipboard
     # here is some command line tools I use frequently
     # feel free to add your own or remove some of them
+    vscode
+    fuzzel
 
     neofetch
     nnn # terminal file manager
@@ -331,8 +342,7 @@
     settings = {
       env.TERM = "xterm-256color";
       font = {
-        size = 12;
-        draw_bold_text_with_bright_colors = true;
+        size = 16;
       };
       scrolling.multiplier = 5;
       selection.save_to_clipboard = true;
@@ -363,6 +373,7 @@
   # the home Manager release notes for a list of state version
   # changes in each release.
   home.stateVersion = "23.11";
+  home.enableNixpkgsReleaseCheck = false;
 
   # Let home Manager install and manage itself.
   programs.home-manager.enable = true;
