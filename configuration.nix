@@ -92,19 +92,22 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
-  services.xserver.displayManager.sddm.enable = true;
+  services.displayManager.sddm = {
+    enable = true;
+    theme = "sugar-dark";
+  };
 
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
-    enableNvidiaPatches = true;
+    # enableNvidiaPatches = true;
   };
 
   # Configure keymap in X11
   services.xserver = {
     enable = true;
-    layout = "us";
-    xkbVariant = "";
+    xkb.layout = "us";
+    xkb.variant = "";
   };
 
   # Enable CUPS to print documents.
@@ -135,7 +138,9 @@
     isNormalUser = true;
     description = "Johannes";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [];
+    packages = with pkgs; [
+      pavucontrol
+    ];
   };
 
   # Allow unfree packages

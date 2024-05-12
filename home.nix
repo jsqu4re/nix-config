@@ -222,6 +222,11 @@
   #   enable = true;
   # };
 
+  programs.waybar = {
+    enable = true;
+    # systemd.enable = true;
+  };
+
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
@@ -237,6 +242,8 @@
     nnn # terminal file manager
     ncdu
     tldr
+
+    steam
 
     # archives
     zip
