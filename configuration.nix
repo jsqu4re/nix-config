@@ -149,10 +149,6 @@
   # Fix issues with electron based apps
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
-  environment.etc = {
-    "per-user/alacritty/alacritty.toml" = ./alacritty/nord.toml; 
-  };
-
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

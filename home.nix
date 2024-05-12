@@ -1,13 +1,15 @@
 { config, pkgs, ... }:
   let
-    gatito.black = "252B2E";
-    gatito.gray = "D4D4D4";
-    gatito.red = "E15A60";
-    gatito.green = "99C794";
-    gatito.yellow = "FAC863";
-    gatito.blue = "6699CC";
-    gatito.purple = "C594C5";
-    gatito.turquoise = "5FB3B3";
+    color.background = "2E3440";
+    color.foreground = "D8DEE9";
+    color.black = "3B4252";
+    color.red = "BF616A";
+    color.green = "A3BE8C";
+    color.yellow = "EBCB8B";
+    color.blue = "81A1C1";
+    color.magenta = "B48EAD";
+    color.cyan = "88C0D0";
+    color.white = "E5E9F0";
   in 
 {
   home.username = "jsqu4re";
@@ -43,7 +45,7 @@
       "$terminal" = "${pkgs.lib.getExe config.programs.alacritty.package}";
       "$editor" = "${pkgs.lib.getExe pkgs.neovim-unwrapped}";
       "$browser" = "${pkgs.lib.getExe pkgs.floorp}";
-      "$launcher" = "${pkgs.lib.getExe pkgs.fuzzel} -b ${gatito.black}F5 -t ${gatito.gray}FF -s ${gatito.red}AF -m ${gatito.yellow}90 -S ${gatito.gray}FF -M ${gatito.green}FF -r 40 -B 20 -C 252B2EF5";
+      "$launcher" = "${pkgs.lib.getExe pkgs.fuzzel} -b ${color.background}F5 -t ${color.foreground}FF -s ${color.cyan}AF -m ${color.yellow}90 -S ${color.black}FF -M ${color.green}FF -r 40 -B 2 -C ${color.white}F5 -y 30 -P 20";
       "$fileManager" = "${pkgs.lib.getExe pkgs.cinnamon.nemo-with-extensions}";
 
       env = [
@@ -103,7 +105,7 @@
         sensitivity = "-0.25";
         accel_profile = "flat";
 
-        follow_mouse = "0";
+        follow_mouse = "1";
       };
 
       general = {
@@ -339,14 +341,7 @@
   programs.alacritty = {
     enable = true;
     # custom settings
-    settings = {
-      env.TERM = "xterm-256color";
-      font = {
-        size = 16;
-      };
-      scrolling.multiplier = 5;
-      selection.save_to_clipboard = true;
-    };
+    settings = builtins.fromTOML (builtins.readFile ./alacritty/nord.toml);
   };
 
   programs.bash = {
