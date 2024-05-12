@@ -166,6 +166,13 @@
         "$mainMod, up, movefocus, u"
         "$mainMod, down, movefocus, d"
 
+        "$mainMod, r, resizeactive"
+
+        "$mainMod SHIFT, left, movewindow, l"
+        "$mainMod SHIFT, right, movewindow, r"
+        "$mainMod SHIFT, up, movewindow, u"
+        "$mainMod SHIFT, down, movewindow, d"
+
         # switch workspaces
         "$mainMod, 1, workspace, 1"
         "$mainMod, 2, workspace, 2"
@@ -252,6 +259,7 @@
     # feel free to add your own or remove some of them
     vscode
     fuzzel
+    cmatrix
 
     neofetch
     nnn # terminal file manager
@@ -303,6 +311,7 @@
     # productivity
     glow # markdown previewer in terminal
 
+    htop
     btop  # replacement of htop/nmon
     iotop # io monitoring
     iftop # network monitoring
