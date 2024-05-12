@@ -72,9 +72,9 @@
 
       windowrulev2 = [
         # steam
-        "float, class:(steam), title:(Steam)"
-        "float, class:(steam), title:(Friends List)"
-        "nofocus, class:^(steam)$, title:^()$"
+        # "float, class:(steam), title:(Steam)"
+        # "float, class:(steam), title:(Friends List)"
+        # "nofocus, class:^(steam)$, title:^()$"
 
         # flameshot
         # "float, title:^(flameshot)"
@@ -84,6 +84,8 @@
         # satty
         "noanim, class:(com.gabm.satty)"
         "float, class:(com.gabm.satty)"
+
+        "opacity 0.9 0.9, class:^(.*)$"
       ];
 
       layerrule = [
@@ -109,8 +111,8 @@
       };
 
       general = {
-        gaps_in = "4";
-        gaps_out = "8";
+        gaps_in = "8";
+        gaps_out = "24";
 
         no_cursor_warps = "true";
 
