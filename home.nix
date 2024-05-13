@@ -317,7 +317,7 @@
           on-click-right="pavucontrol";
         };
         modules-center = ["hyprland/window"];
-        modules-right = ["clock" "tray"];
+        modules-right = ["tray" "clock"];
       };
     };
     # font-family: Source Code Pro;
@@ -413,10 +413,11 @@
       }
 
       #tray {
+        background-color: #${color.background};
         padding-left: 8px;
         padding-right:8px;
         min-width: 40px;
-        border-left: 2px dashed #${color.cyan};
+        border-left: 2px solid #${color.cyan};
         font-size: 20px;
       }
 
