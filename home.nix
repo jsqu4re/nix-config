@@ -249,13 +249,78 @@
         layer = "top";
         position = "top";
         height = 10;
-        modules-left = ["hyprland/workspaces" "pulseaudio" "cpu" "memory" "disk"];
+        modules-left = [
+          "hyprland/workspaces"
+          "pulseaudio"
+          "cpu"
+          "memory"
+          "disk"
+        ];
+        "cpu" = {
+          interval=1;
+          format=" &#xf2db; {icon} ";
+          format-icons={
+            default= [
+              "          "
+              "|         "
+              "||        "
+              "|||       "
+              "||||      "
+              "|||||     "
+              "||||||    "
+              "|||||||   "
+              "||||||||  "
+              "||||||||| "
+              "||||||||||"
+            ];
+          };
+        };
+        "memory" = {
+          interval=1;
+          format=" &#xf3ff; {icon} ";
+          format-icons={
+            default= [
+              "          "
+              "|         "
+              "||        "
+              "|||       "
+              "||||      "
+              "|||||     "
+              "||||||    "
+              "|||||||   "
+              "||||||||  "
+              "||||||||| "
+              "||||||||||"
+            ];
+          };
+        };
+        "disk" = {
+          interval=1;
+          format=" &#xf1c0; {free} ";
+        };
+        "pulseaudio"= {
+          format="{icon}";
+          format-muted="&#xF6A9;        ";
+          format-icons={
+            default= [
+              "&#xF026;        "
+              "&#xF027;        "
+              "&#xF028;        "
+              "&#xF028; )      "
+              "&#xF028; )|     "
+              "&#xF028; )||    "
+              "&#xF028; )|||   "
+              "&#xF028; )||||  "
+              "&#xF028; )||||| "];
+          };
+          on-click="wpctl set-mute @DEFAULT_SINK@ toggle";
+          on-click-right="pavucontrol";
+        };
         modules-center = ["hyprland/window"];
         modules-right = ["clock" "tray"];
       };
     };
     # font-family: Source Code Pro;
-    font-family: "Arimo Nerd Font", "Font Awesome 6 Free";
     # #workspaces button {
     #   padding: 0 5px;
     # }
@@ -264,6 +329,7 @@
         border: none;
         border-radius: 0;
         font-size: 14px;
+        font-family: "Arimo Nerd Font", "Font Awesome 5 Free", "Font Awesome 6 Free";
       }
       window#waybar {
         background: transparent;
@@ -381,6 +447,10 @@
     vscode
     fuzzel
     cmatrix
+    gnome.nautilus
+    # gimp
+    # audacity
+    whatsapp-for-linux
 
     neofetch
     nnn # terminal file manager
