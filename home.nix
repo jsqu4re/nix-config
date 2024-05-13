@@ -255,6 +255,7 @@
       };
     };
     # font-family: Source Code Pro;
+    font-family: "Arimo Nerd Font", "Font Awesome 6 Free";
     # #workspaces button {
     #   padding: 0 5px;
     # }
@@ -447,6 +448,17 @@
     ethtool
     pciutils # lspci
     usbutils # lsusb
+
+    # fonts
+    fira-code
+    fira-code-symbols
+    font-awesome
+    liberation_ttf
+    mplus-outline-fonts.githubRelease
+    nerdfonts
+    noto-fonts
+    noto-fonts-emoji
+    proggyfonts
   ];
 
   # basic configuration of git, please change to your own
