@@ -36,6 +36,8 @@
     "Xft.dpi" = 200;
   };
 
+  # services.hyprpaper.enable = true;
+
   wayland.windowManager.hyprland = {
     enable = true;
 
@@ -45,7 +47,7 @@
       "$terminal" = "${pkgs.lib.getExe config.programs.alacritty.package}";
       "$editor" = "${pkgs.lib.getExe pkgs.neovim-unwrapped}";
       "$browser" = "${pkgs.lib.getExe pkgs.floorp}";
-      "$launcher" = "${pkgs.lib.getExe pkgs.fuzzel} -b ${color.background}F5 -t ${color.foreground}FF -s ${color.cyan}AF -m ${color.yellow}90 -S ${color.black}FF -M ${color.green}FF -r 40 -B 2 -C ${color.white}F5 -y 30 -P 20 --list-executables-in-path ${./programs}";
+      "$launcher" = "${pkgs.lib.getExe pkgs.fuzzel} -b ${color.background}F5 -t ${color.foreground}FF -s ${color.cyan}AF -m ${color.yellow}90 -S ${color.black}FF -M ${color.green}FF -r 40 -B 2 -C ${color.white}F5 -y 30 -P 20";
       "$fileManager" = "${pkgs.lib.getExe pkgs.cinnamon.nemo-with-extensions}";
 
       env = [

@@ -14,6 +14,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  boot.supportedFilesystems = [ "ntfs" ];
+
   networking.hostName = "tabula"; # Define your hostname.
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
