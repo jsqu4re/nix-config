@@ -448,6 +448,7 @@
     # here is some command line tools I use frequently
     # feel free to add your own or remove some of them
     vscode
+    nixpkgs-fmt
     fuzzel
     cmatrix
     gnome.nautilus
@@ -583,7 +584,7 @@
   # You can update home Manager without changing this value. See
   # the home Manager release notes for a list of state version
   # changes in each release.
-  home.stateVersion = "23.11";
+  home.stateVersion = "24.05";
   home.enableNixpkgsReleaseCheck = false;
 
   # Let home Manager install and manage itself.
