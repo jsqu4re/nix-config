@@ -22,6 +22,8 @@
             home-manager.useUserPackages = true;
 
             home-manager.users.jsqu4re = import ./home.nix;
+
+            home-manager.backupFileExtension = "backup";
           }
       ];
     };
