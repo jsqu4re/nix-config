@@ -36,7 +36,21 @@
     "Xft.dpi" = 200;
   };
 
-  services.hyprpaper.enable = true;
+  services.hyprpaper = {
+    enable = true;
+    settings = {
+      ipc = "on";
+      splash = false;
+      splash_offset = 2.0;
+
+      preload =
+        [ "${./assets/background.png}" ];
+
+      wallpaper = [
+        "HDMI-A-3,${./assets/background.png}"
+      ];
+    };
+  };
 
   wayland.windowManager.hyprland = {
     enable = true;
