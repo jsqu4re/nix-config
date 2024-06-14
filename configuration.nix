@@ -18,7 +18,7 @@
     theme = "stylish";
     footer = false;
     screen = "4k";
-    bootMenuConfig = "left = 30%";
+    bootMenuConfig = (builtins.readFile .config/boot/theme-4k.txt);
     splashImage = ./assets/background.png;
   };
 
