@@ -11,12 +11,14 @@
     device = "nodev";
     useOSProber = true;
     efiSupport = true;
-    # grub2-theme = {
-    #   enable = true;
-    #   style = "nixos";
-    #   icon = "color";
-    #   resolution = "4k";
-    # };
+    boot.loader.grub2-theme = {
+      enable = true;
+      theme = "stylish";
+      footer = true;
+      screen = "4k";
+      bootMenuConfig = "left = 30%";
+      splashImage = "./assets/wallpaper.png";
+    };
   };
 
   boot.loader.efi.canTouchEfiVariables = true;
