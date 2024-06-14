@@ -11,7 +11,7 @@
     device = "nodev";
     useOSProber = true;
     efiSupport = true;
-    boot.loader.grub2-theme = {
+    grub2-theme = {
       enable = true;
       theme = "stylish";
       footer = true;
