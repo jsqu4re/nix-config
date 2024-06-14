@@ -16,9 +16,9 @@
   boot.loader.grub2-theme = {
     enable = true;
     theme = "stylish";
-    footer = true;
-    screen = "4k";
-    bootMenuConfig = "left = 30%";
+    footer = false;
+    # screen = "4k";
+    # bootMenuConfig = "left = 30%";
     splashImage = ./assets/wallpaper.png;
   };
 
