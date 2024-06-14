@@ -9,7 +9,12 @@
   boot.loader.grub = {
     enable = true;
     device = "nodev";
-    useOSProber = true;
+    # useOSProber = true;
+    extraEntries = ''
+      menuentry "Windows 10" {
+        chainloader (hd2,0)
+      }
+    '';
     efiSupport = true;
   };
 
@@ -18,7 +23,6 @@
     theme = "stylish";
     footer = false;
     screen = "4k";
-    bootMenuConfig = (builtins.readFile ./config/boot/theme-4k.txt);
     splashImage = ./assets/background.png;
   };
 
