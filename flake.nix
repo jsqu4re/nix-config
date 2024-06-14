@@ -8,12 +8,14 @@
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    darkmatter.url = "gitlab:VandalByte/darkmatter-grub-theme";
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs: {
     nixosConfigurations.tabula = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
+        darkmatter.nixosModule
         ./configuration.nix
 
         home-manager.nixosModules.home-manager
