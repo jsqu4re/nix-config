@@ -9,12 +9,12 @@
   boot.loader.grub = {
     enable = true;
     device = "nodev";
-    # useOSProber = true;
-    extraEntries = ''
-      menuentry "Windows 10" {
-        chainloader (hd0,0)
-      }
-    '';
+    useOSProber = true;
+    # extraEntries = ''
+    #   menuentry "Windows 10" {
+    #     chainloader (hd2,0)+1
+    #   }
+    # '';
     efiSupport = true;
   };
 
