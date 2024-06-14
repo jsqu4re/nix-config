@@ -36,7 +36,7 @@
     "Xft.dpi" = 200;
   };
 
-  # services.hyprpaper.enable = true;
+  services.hyprpaper.enable = true;
 
   wayland.windowManager.hyprland = {
     enable = true;
