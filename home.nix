@@ -104,7 +104,7 @@
         "ignorezero, quickshell"
       ];
 
-      monitor = "HDMI-A-3,3840x2160@60,0x0,1,Unknown-1,disable";
+      monitor = ["HDMI-A-3,3840x2160@60,0x0,1" "Unknown-1,disable"];
 
       input = {
         sensitivity = "-0.25";
