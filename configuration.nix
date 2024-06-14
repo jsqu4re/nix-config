@@ -85,11 +85,11 @@
     };
   };
 
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-    # enableNvidiaPatches = true;
-  };
+  # programs.hyprland = {
+  #   enable = true;
+  #   xwayland.enable = true;
+  #   # enableNvidiaPatches = true;
+  # };
 
   # Configure keymap in X11
   services.xserver = {
