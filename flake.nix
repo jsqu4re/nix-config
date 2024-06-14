@@ -9,7 +9,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     grub2-theme = {
-      url = "gitlab:VandalByte/darkmatter-grub-theme";
+      url = "github:vinceliuice/grub2-themes";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
