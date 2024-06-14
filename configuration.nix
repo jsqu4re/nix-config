@@ -17,7 +17,7 @@
       enable = true;
       style = "nixos";
       icon = "color";
-      resolution = "2160p";
+      resolution = "1440p";
     };
   };
 
