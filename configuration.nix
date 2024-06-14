@@ -10,11 +10,11 @@
     enable = true;
     device = "nodev";
     useOSProber = true;
-    # extraEntries = ''
-    #   menuentry "Windows 10" {
-    #     chainloader (hd2,0)+1
-    #   }
-    # '';
+    extraEntries = ''
+      menuentry "Windows 10" {
+        chainloader (hd0,1)+1
+      }
+    '';
     efiSupport = true;
   };
 
