@@ -11,22 +11,20 @@
     darkmatter.url = "gitlab:VandalByte/darkmatter-grub-theme";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, darkmatter, ... }@inputs: {
     nixosConfigurations.tabula = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        darkmatter.nixosModule
         ./configuration.nix
 
-        home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
+        home-manager.nixosModules.home-manager {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.jsqu4re = import ./home.nix;
+          home-manager.backupFileExtension = "backup";
+        }
 
-            home-manager.users.jsqu4re = import ./home.nix;
-
-            home-manager.backupFileExtension = "backup";
-          }
+        darkmatter.nixosModule
       ];
     };
   };
