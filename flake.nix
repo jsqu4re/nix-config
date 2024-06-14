@@ -11,7 +11,7 @@
     grub2-theme = {
       url = "gitlab:VandalByte/darkmatter-grub-theme";
       inputs.nixpkgs.follows = "nixpkgs";
-    }
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, grub2-theme, ... }@inputs: {
