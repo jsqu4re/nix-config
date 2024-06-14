@@ -8,12 +8,16 @@
 
   boot.loader.grub = {
     enable = true;
+    version = 2;
+
     device = "nodev";
     useOSProber = true;
     efiSupport = true;
     darkmatter-theme = {
       enable = true;
       style = "nixos";
+      icon = "color";
+      resolution = "2160p";
     };
   };
 
