@@ -17,9 +17,9 @@
     enable = true;
     theme = "stylish";
     footer = false;
-    # screen = "4k";
-    # bootMenuConfig = "left = 30%";
-    splashImage = ./assets/wallpaper.png;
+    screen = "4k";
+    bootMenuConfig = "left = 30%";
+    splashImage = ./assets/background.png;
   };
 
   boot.loader.efi.canTouchEfiVariables = true;
