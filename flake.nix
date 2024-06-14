@@ -2,16 +2,19 @@
   description = "A simple NixOS flake";
 
   inputs = {
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    darkmatter.url = "gitlab:VandalByte/darkmatter-grub-theme";
+    grub2-theme = {
+      url = "gitlab:VandalByte/darkmatter-grub-theme";
+      inputs.nixpkgs.follows = "nixpkgs";
+    }
   };
 
-  outputs = { self, nixpkgs, home-manager, darkmatter, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, grub2-theme, ... }@inputs: {
     nixosConfigurations.tabula = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
@@ -24,7 +27,7 @@
           home-manager.backupFileExtension = "backup";
         }
 
-        darkmatter.nixosModule
+        grub2-theme.nixosModule
       ];
     };
   };

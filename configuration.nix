@@ -11,12 +11,12 @@
     device = "nodev";
     useOSProber = true;
     efiSupport = true;
-    darkmatter-theme = {
-      enable = true;
-      style = "nixos";
-      icon = "color";
-      resolution = "1440p";
-    };
+    # grub2-theme = {
+    #   enable = true;
+    #   style = "nixos";
+    #   icon = "color";
+    #   resolution = "4k";
+    # };
   };
 
   boot.loader.efi.canTouchEfiVariables = true;
