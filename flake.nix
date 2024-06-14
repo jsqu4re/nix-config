@@ -27,7 +27,7 @@
           home-manager.backupFileExtension = "backup";
         }
 
-        grub2-theme.nixosModule
+        grub2-theme.nixosModules.default
       ];
     };
   };

@@ -19,7 +19,7 @@
     footer = true;
     screen = "4k";
     bootMenuConfig = "left = 30%";
-    splashImage = "./assets/wallpaper.png";
+    splashImage = ./assets/wallpaper.png;
   };
 
   boot.loader.efi.canTouchEfiVariables = true;
