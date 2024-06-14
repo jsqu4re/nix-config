@@ -20,18 +20,17 @@
 
   boot.loader.grub2-theme = {
     enable = true;
-    theme = "stylish";
-    footer = false;
-    screen = "4k";
+    theme = "whitesur";
+    icon = "white";
+    screen = "1080p";
+    # bootMenuConfig = ./config/boot/theme-4k.txt;
     splashImage = ./assets/background.png;
+    footer = false;
   };
 
   boot.loader.efi.canTouchEfiVariables = true;
-
   boot.supportedFilesystems = [ "ntfs" ];
-
   networking.hostName = "tabula";
-
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   nix.settings = {
