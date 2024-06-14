@@ -12,7 +12,7 @@
     # useOSProber = true;
     extraEntries = ''
       menuentry "Windows 10" {
-        chainloader (hd2,0)
+        chainloader (hd0,0)
       }
     '';
     efiSupport = true;
