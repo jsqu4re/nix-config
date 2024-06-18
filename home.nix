@@ -349,9 +349,9 @@
             format = {
               months = "<span color='#${color.foreground}'><b>{}</b></span>";
               days = "<span color='#${color.foreground}'><b>{}</b></span>";
-              weeks = "<span color='#${color.yellow}'><b>W{}</b></span>";
-              weekdays = "<span color='#${color.yellow}'><b>{}</b></span>";
-              today = "<span color='#${color.cyan}'><b><u>{}</u></b></span>";
+              weeks = "<span color='#${color.cyan}'><b>W{}</b></span>";
+              weekdays = "<span color='#${color.cyan}'><b>{}</b></span>";
+              today = "<span color='#${color.yellow}'><b><u>{}</u></b></span>";
             };
           };
           actions = {
