@@ -144,6 +144,10 @@
   # Fix issues with electron based apps
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
+  services.onedrive.enable = true;
+
+  networking.defaultGateway = "192.168.1.1";
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

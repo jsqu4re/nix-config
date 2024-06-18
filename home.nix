@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
   let
     color.background = "2E3440";
+    color.lightbackground = "3E4656";
     color.foreground = "D8DEE9";
     color.black = "3B4252";
     color.red = "BF616A";
@@ -200,6 +201,7 @@
         "$mainMod, 7, workspace, 7"
         "$mainMod, 8, workspace, 8"
         "$mainMod, 9, workspace, 9"
+        "$mainMod, 0, workspace, 10"
 
         # move active window to workspace
         "$mainMod SHIFT, 1, movetoworkspace, 1"
@@ -211,6 +213,7 @@
         "$mainMod SHIFT, 7, movetoworkspace, 7"
         "$mainMod SHIFT, 8, movetoworkspace, 8"
         "$mainMod SHIFT, 9, movetoworkspace, 9"
+        "$mainMod SHIFT, 0, movetoworkspace, 10"
 
         # scroll through workspaces
         "$mainMod, mouse_down, workspace, e+1"
@@ -341,11 +344,13 @@
     # #workspaces button {
     #   padding: 0 5px;
     # }
+    # margin-left: 5px;
+    # margin-right: 5px;
     style = ''
       * {
         border: none;
-        border-radius: 0;
-        font-size: 14px;
+        border-radius: 20;
+        font-size: 16px;
         font-family: "Arimo Nerd Font", "Font Awesome 5 Free", "Font Awesome 6 Free";
       }
       window#waybar {
@@ -353,17 +358,20 @@
         color: #${color.foreground};
       }
 
-      #workspaces button {
+      #workspaces button {        
         padding-left: 10px;
         padding-right: 10px;
+        margin-top: 8px;
+        margin-left: 5px;
         /*padding-top: 5px;
         padding-bottom: 5px;*/
 
         background-color: #${color.background};
         color: inherit;
         font-weight: 600;
-        border-top: 4px solid transparent;
-        border-bottom: 3px solid transparent;
+        border-top: 2px solid #${color.lightbackground};
+        border-bottom: 1px solid #${color.lightbackground};
+        border-right: 2px solid #${color.background};
         border-left: 2px solid #${color.yellow};
       }
 
@@ -371,47 +379,61 @@
         background: #${color.black};
         box-shadow: inherit;
         text-shadow: inherit;
-        border-bottom: 3px solid #${color.yellow};
-        border-top: 3px solid #${color.yellow};
+        border-bottom: 2px solid #${color.yellow};
+        border-top: 2px solid #${color.yellow};
+        border-right: 2px solid #${color.yellow};
       }
 
       #workspaces button.focused {
         background: #${color.green};
 
-        border-top: 3px solid #${color.cyan};
+        /*border-top: 3px solid #${color.cyan};
         border-bottom: 3px solid #${color.cyan};
-        border-left: 2px solid #${color.cyan};
+        border-left: 2px solid #${color.cyan};*/
 
         color: #${color.cyan};
       }
 
       #workspaces button.active {
+        border-top: 2px solid #${color.yellow};
+        border-bottom: 2px solid #${color.yellow};
+        border-right: 2px solid #${color.yellow};
+        border-left: 2px solid #${color.yellow};
         background: #${color.yellow};
         color: #${color.black};
       }
 
       #workspaces button:first-child {
-        border-left: 0;
+        margin-left: 20px;
+        /*border-left: 0;*/
       }
       #workspaces button.focused + button {
-        border-left: none;
+        border-left: 2px solid #${color.cyan};
       }
 
-      #workspaces button.focused:first-child {
+      /*#workspaces button.focused:first-child {
         border-left: none;
       }
 
       #workspaces button.focused:last-child {
         border-right: none;
-      }
+      }*/
 
       #workspaces button.urgent {
         background-color: #${color.red};
       }
 
+      #pulseaudio, #cpu, #memory, #disk{
+        margin-left: 5px;
+        border-left: 2px solid #${color.cyan};
+      }
+
       #window, #disk, #mpd, #pulseaudio, #network, #cpu, #memory, #temperature, #clock {
         padding-left: 8px;
         padding-right: 8px;
+        margin-top: 8px;
+        border-top: 2px solid #${color.lightbackground};
+        border-bottom: 1px solid #${color.lightbackground};
         /*
         padding-top: 5px;
         padding-bottom: 5px;
@@ -420,12 +442,17 @@
         background-color: #${color.background};
         color: inherit;
         font-weight: 600;
-        border-top: 4px solid transparent;
-        border-bottom: 3px solid transparent;
-        border-left: 2px solid #${color.cyan};
+        /*border-top: 4px solid transparent;
+        border-bottom: 3px solid transparent;*/
       }
 
-      #window, #disk {
+      #disk, #clock {
+        border-left: 2px solid #${color.cyan};
+        border-right: 2px solid #${color.yellow};
+      }
+      
+      #window {
+        border-left: 2px solid #${color.yellow};
         border-right: 2px solid #${color.cyan};
       }
 
@@ -440,6 +467,7 @@
 
       #clock {
         font-size: 18px;
+        margin-right: 20px;
       }
 
       @keyframes blink {
@@ -555,6 +583,14 @@
     enable = true;
     userName = "Johannes Jeising";
     userEmail = "johannes.jeising@gmail.com";
+    aliases = {
+      co = "checkout";
+      st = "status";
+      p = "push";
+      c = "commit";
+      cm = "commit -m";
+      aa = "add --all";
+    };
   };
 
   # starship - an customizable prompt for any shell
