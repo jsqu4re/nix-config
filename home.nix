@@ -336,6 +336,32 @@
           on-click="wpctl set-mute @DEFAULT_SINK@ toggle";
           on-click-right="pavucontrol";
         };
+        "clock"= {
+          format = "{:%H:%M}";
+          format-alt = "{:%A   %d. %B %Y   %R}";
+          tooltip-format = "<tt><small>{calendar}</small></tt>";
+          calendar = {
+            mode = "year";
+            mode-mon-col = 3;
+            weeks-pos = "right";
+            on-scroll = 1;
+            on-click-right = "mode";
+            format = {
+              months = "<span color='#${color.foreground}'><b>{}</b></span>";
+              days = "<span color='#${color.foreground}'><b>{}</b></span>";
+              weeks = "<span color='#${color.yellow}'><b>W{}</b></span>";
+              weekdays = "<span color='#${color.yellow}'><b>{}</b></span>";
+              today = "<span color='#${color.cyan}'><b><u>{}</u></b></span>";
+            };
+          };
+          actions = {
+            on-click-right = "mode";
+            on-click-forward = "tz_up";
+            on-click-backward = "tz_down";
+            on-scroll-up = "shift_up";
+            on-scroll-down = "shift_down";
+          };
+        };
         modules-center = ["hyprland/window"];
         modules-right = ["tray" "clock"];
       };
