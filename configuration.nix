@@ -136,6 +136,7 @@
     vim
     wget
     curl
+    quickemu
   ];
 
   environment.variables.EDITOR = "vim";
