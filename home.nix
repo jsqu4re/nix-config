@@ -531,8 +531,6 @@
     ncdu
     tldr
 
-    steam
-
     # archives
     zip
     xz
@@ -603,6 +601,10 @@
     noto-fonts
     noto-fonts-emoji
     proggyfonts
+
+    #games
+    itch
+    steam
   ];
 
   # basic configuration of git, please change to your own
