@@ -603,7 +603,7 @@
     proggyfonts
 
     #games
-    itch
+    # itch
     steam
   ];
 
