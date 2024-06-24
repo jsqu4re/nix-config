@@ -147,6 +147,7 @@
   services.onedrive.enable = true;
 
   networking.defaultGateway = "192.168.1.1";
+  networking.nameservers = [ "192.168.1.145" ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
