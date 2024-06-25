@@ -132,8 +132,6 @@
         gaps_in = "8";
         gaps_out = "24";
 
-        no_cursor_warps = "true";
-
         layout = "dwindle";
       };
 
