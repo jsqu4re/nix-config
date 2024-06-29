@@ -49,6 +49,7 @@
 
       wallpaper = [
         "HDMI-A-3,${./assets/background.png}"
+        "eDP-1,${./assets/background.png}"
       ];
     };
   };

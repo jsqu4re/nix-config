@@ -24,7 +24,7 @@
     icon = "white";
     screen = "1080p";
     # bootMenuConfig = ./config/boot/theme-4k.txt;
-    splashImage = ./assets/background.png;
+    splashImage = ./../../assets/background.png;
     footer = false;
   };
 
@@ -43,8 +43,6 @@
   # Enable OpenGL
   hardware.opengl = {
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
   };
 
   # Load nvidia driver for Xorg and Wayland

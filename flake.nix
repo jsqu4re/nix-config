@@ -18,7 +18,7 @@
     nixosConfigurations.tabula = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        ./tabula/configuration.nix
+        ./machine/tabula/configuration.nix
 
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
@@ -33,7 +33,7 @@
     nixosConfigurations.mutabilix = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        ./mutabilix/configuration.nix
+        ./machine/mutabilix/configuration.nix
 
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;

@@ -24,7 +24,7 @@
     icon = "white";
     screen = "1080p";
     # bootMenuConfig = ./config/boot/theme-4k.txt;
-    splashImage = ./assets/background.png;
+    splashImage = ./../../assets/background.png;
     footer = false;
   };
 
