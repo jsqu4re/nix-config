@@ -513,15 +513,13 @@
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
     wl-clipboard
-    # here is some command line tools I use frequently
-    # feel free to add your own or remove some of them
     vscode
     floorp
     nixpkgs-fmt
     fuzzel
     cmatrix
     gnome.nautilus
-    # gimp
+    gimp
     # audacity
     whatsapp-for-linux
 
@@ -543,24 +541,11 @@
     eza # A modern replacement for ‘ls’
     fzf # A command-line fuzzy finder
 
-    # networking tools
-    mtr # A network diagnostic tool
-    iperf3
-    dnsutils  # `dig` + `nslookup`
-    ldns # replacement of `dig`, it provide the command `drill`
-    aria2 # A lightweight multi-protocol & multi-source command-line download utility
-    socat # replacement of openbsd-netcat
-    nmap # A utility for network discovery and security auditing
-    ipcalc  # it is a calculator for the IPv4/v6 addresses
-
     # misc
     cowsay
     file
     which
     tree
-    gnused
-    gnutar
-    gawk
     zstd
     gnupg
 
@@ -578,11 +563,6 @@
     iotop # io monitoring
     iftop # network monitoring
 
-    # system call monitoring
-    strace # system call monitoring
-    ltrace # library call monitoring
-    lsof # list open files
-
     # system tools
     sysstat
     lm_sensors # for `sensors` command
@@ -591,21 +571,14 @@
     usbutils # lsusb
 
     # fonts
-    fira-code
-    fira-code-symbols
     font-awesome
     liberation_ttf
-    mplus-outline-fonts.githubRelease
     nerdfonts
-    noto-fonts
-    noto-fonts-emoji
-    proggyfonts
+
 
     #games
     # itch
     steam
-
-    gimp
   ];
 
   # basic configuration of git, please change to your own
@@ -652,8 +625,7 @@
 
     # set some aliases, feel free to add more or remove some
     shellAliases = {
-      urldecode = "python3 -c 'import sys, urllib.parse as ul; print(ul.unquote_plus(sys.stdin.read()))'";
-      urlencode = "python3 -c 'import sys, urllib.parse as ul; print(ul.quote_plus(sys.stdin.read()))'";
+      # Go here
     };
   };
 
