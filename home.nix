@@ -248,6 +248,10 @@
         ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
         ", XF86MonBrightnessUp, exec, brightnessctl set +5%"
       ];
+
+      misc = {
+        disable_hyprland_logo = true;
+      };
     };
   };
   
