@@ -101,7 +101,7 @@
       "$editor" = "${pkgs.lib.getExe pkgs.neovim-unwrapped}";
       "$browser" = "${pkgs.lib.getExe pkgs.floorp}";
       "$launcher" = "${pkgs.lib.getExe pkgs.fuzzel} -b ${color.background}F5 -t ${color.foreground}FF -s ${color.cyan}AF -m ${color.yellow}90 -S ${color.black}FF -M ${color.green}FF -r 40 -B 2 -C ${color.white}F5 -y 30 -P 20";
-      "$fileManager" = "${pkgs.lib.getExe pkgs.cinnamon.nemo-with-extensions}";
+      "$fileManager" = "${pkgs.lib.getExe pkgs.nemo-with-extensions}";
 
       env = [
         # use igpu for hyprland
@@ -554,11 +554,12 @@
   home.packages = with pkgs; [
     wl-clipboard
     vscode
+    zed-editor
     floorp
     nixpkgs-fmt
     fuzzel
     cmatrix
-    gnome.nautilus
+    nautilus
     gimp
     # audacity
     whatsapp-for-linux
