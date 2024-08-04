@@ -83,6 +83,8 @@
     };
   };
 
+  security.pam.services.hyprlock = {};
+
   # programs.hyprland = {
   #   enable = true;
   #   xwayland.enable = true;
