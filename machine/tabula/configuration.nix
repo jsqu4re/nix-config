@@ -6,6 +6,11 @@
       ./hardware-configuration.nix
     ];
 
+  nix.trustedUsers = [ "jsqu4re" "root" "@wheel" ];
+
+  virtualisation.libvirtd.enable = true;
+  boot.kernelModules = [ "kvm-amd" "kvm-intel" ];
+
   boot.loader.grub = {
     enable = true;
     device = "nodev";
@@ -120,7 +125,7 @@
   users.users.jsqu4re = {
     isNormalUser = true;
     description = "Johannes";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "qemu-libvirtd" "libvirtd" "video" "audio" "disk" "networkmanager" "wheel" ];
     packages = with pkgs; [
       pavucontrol
     ];
