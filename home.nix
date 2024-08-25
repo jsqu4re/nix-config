@@ -598,6 +598,8 @@
 
     # productivity
     glow # markdown previewer in terminal
+    bat
+    silver-searcher
 
     htop
     btop  # replacement of htop/nmon
@@ -614,7 +616,7 @@
     # fonts
     font-awesome
     liberation_ttf
-    nerdfonts
+    # nerdfonts
 
 
     #games
@@ -668,6 +670,24 @@
     shellAliases = {
       # Go here
     };
+  };
+
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+    viAlias = true;
+    vimAlias = true;
+    vimdiffAlias = true;
+    plugins = with pkgs.vimPlugins; [
+      nvim-lspconfig
+      nvim-treesitter.withAllGrammars
+      plenary-nvim
+      gruvbox-material
+      mini-nvim
+      fzf-vim
+    ];
+    # Use the Nix package search engine to find
+    # even more plugins : https://search.nixos.org/packages
   };
 
   # This value determines the home Manager release that your
