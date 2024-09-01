@@ -616,7 +616,7 @@
     # fonts
     font-awesome
     liberation_ttf
-    # nerdfonts
+    nerdfonts
 
 
     #games
@@ -656,6 +656,10 @@
     enable = true;
     # custom settings
     settings = builtins.fromTOML (builtins.readFile ./alacritty/nord.toml);
+  };
+
+  programs.kitty = {
+    enable = true;
   };
 
   programs.bash = {
