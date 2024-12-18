@@ -1,17 +1,31 @@
 { config, pkgs, ... }:
-  let
-    color.background = "2E3440";
-    color.lightbackground = "3E4656";
-    color.foreground = "D8DEE9";
-    color.black = "3B4252";
-    color.red = "BF616A";
-    color.green = "A3BE8C";
-    color.yellow = "EBCB8B";
-    color.blue = "81A1C1";
-    color.magenta = "B48EAD";
-    color.cyan = "88C0D0";
-    color.white = "E5E9F0";
-  in 
+let
+  color.background = "2E3440";
+  color.lightbackground = "3E4656";
+  color.foreground = "D8DEE9";
+  color.black = "3B4252";
+  color.red = "BF616A";
+  color.green = "A3BE8C";
+  color.yellow = "EBCB8B";
+  color.blue = "81A1C1";
+  color.magenta = "B48EAD";
+  color.cyan = "88C0D0";
+  color.white = "E5E9F0";
+  zen-browser = pkgs.writeTextFile {
+    name = "zen-browser";
+    text = ''
+      #! ${pkgs.runtimeShell}
+      ${pkgs.nix}/bin/nix run github:0xc000022070/zen-browser-flake
+    '';
+    executable = true;
+    destination = "/bin/zen";
+    # desktopItems = [(pkgs.makeDesktopItem {
+    #   name = "zen";
+    #   desktopName = "Zen Browser";
+    #   exec = "zen-browser";
+    # })];
+  };
+in 
 {
   home.username = "jsqu4re";
   home.homeDirectory = "/home/jsqu4re";
@@ -175,7 +189,7 @@
       decoration = {
         rounding = "10";
 
-        drop_shadow = "false";
+        # drop_shadow = "false";
         # shadow_range = "4";
         # shadow_render_power = "3";
         # "col.shadow" = "rgba(1a1a1aee)";
@@ -552,6 +566,7 @@
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
+    zen-browser
     wl-clipboard
     vscode
     zed-editor
