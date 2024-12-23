@@ -631,8 +631,7 @@ in
     # fonts
     font-awesome
     liberation_ttf
-    nerdfonts
-
+    nerd-fonts.arimo
 
     #games
     # itch

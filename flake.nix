@@ -1,21 +1,20 @@
 {
-  description = "A simple NixOS flake";
+  description = "My NixOS flake";
 
   inputs = {
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     grub2-theme = {
       url = "github:vinceliuice/grub2-themes";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # zen-browser.url = "github:MarceColl/zen-browser-flake";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
-  outputs = { self, nixpkgs, home-manager, grub2-theme, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, grub2-theme, nixos-hardware, ... }@inputs: {
     nixosConfigurations.tabula = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
@@ -43,6 +42,7 @@
           home-manager.backupFileExtension = "backup";
         }
 
+        nixos-hardware.nixosModules.microsoft-surface-pro-intel
         grub2-theme.nixosModules.default
       ];
     };

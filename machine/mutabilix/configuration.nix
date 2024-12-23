@@ -30,7 +30,7 @@
 
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = [ "ntfs" ];
-  boot.kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
+  # boot.kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
 
   networking.hostName = "mutabilix";
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -161,5 +161,5 @@
   # Or disable the firewall altogether.
   networking.firewall.enable = true;
 
-  system.stateVersion = "24.05";
+  system.stateVersion = "24.11";
 }
