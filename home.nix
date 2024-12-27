@@ -227,6 +227,8 @@ in
         # close hyprland session
         "$mainMod SHIFT, e, exit"
 
+        "$mainMod, o, exec, pkill -SIGUSR1 waybar"
+
         # move focus
         "$mainMod, left, movefocus, l"
         "$mainMod, right, movefocus, r"
@@ -295,9 +297,8 @@ in
         ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
 
         # brightness control
-        ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
-        ", XF86MonBrightnessUp, exec, brightnessctl set +5%"
-      ];
+        ", XF86MonBrightnessDown, exec, ${pkgs.brightnessctl}/bin/brightnessctl set 2.5%-"
+        ", XF86MonBrightnessUp, exec, ${pkgs.brightnessctl}/bin/brightnessctl set +2.5%" ];
 
       misc = {
         disable_hyprland_logo = true;
