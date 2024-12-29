@@ -568,21 +568,25 @@ in
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
     zen-browser
+
     wl-clipboard
-    vscode
-    zed-editor
-    floorp
+    # vscode
+    # zed-editor
+    # floorp
     nixpkgs-fmt
     fuzzel
     cmatrix
     nautilus
-    gimp
+    # gimp
     # audacity
     whatsapp-for-linux
 
+    virt-viewer
+    quickemu
+
     neofetch
     nnn # terminal file manager
-    ncdu
+    gdu # better ncdu
     tldr
 
     # archives
@@ -630,13 +634,13 @@ in
     usbutils # lsusb
 
     # fonts
-    font-awesome
+    # font-awesome
     liberation_ttf
     nerd-fonts.arimo
 
     #games
     # itch
-    steam
+    # steam
   ];
 
   # basic configuration of git, please change to your own

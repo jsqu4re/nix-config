@@ -1,5 +1,7 @@
-{ config, pkgs, ... }:
-
+{ config, pkgs, lib, ... }:
+let
+  devices = [ "10de:1c8d" ];
+in
 {
   imports =
     [
@@ -33,6 +35,46 @@
   # boot.kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
 
   networking.hostName = "mutabilix";
+
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu.ovmf.enable = true;
+    onBoot = "ignore";
+    onShutdown = "shutdown";
+  };
+
+  boot.kernelParams = [
+    "intel_iommu=on"
+    "iommu=pt"
+    "vfio-pci.ids=${lib.concatStringsSep "," devices}"
+  ];
+
+  boot.initrd.kernelModules = [
+    "vfio_pci"
+    "vfio"
+    "vfio_iommu_type1"
+  ];
+
+  boot.extraModprobeConfig = ''
+    softdep nvidia pre: vfio-pci
+    softdep drm pre: vfio-pci
+    softdep nouveau pre: vfio-pci
+  '';
+
+  boot.blacklistedKernelModules = [
+    "nouveau"
+    "nvidia"
+    "nvidia_drm"
+    "nvidia_modeset"
+    "i2c_nvidia_gpu"
+  ];
+
+  virtualisation.spiceUSBRedirection.enable = true;
+
+  systemd.tmpfiles.rules = [
+    "f /dev/shm/looking-glass 0660 ${config.users.users.jsqu4re.name} libvirtd -"
+  ];
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   nix.settings = {
@@ -120,7 +162,7 @@
   users.users.jsqu4re = {
     isNormalUser = true;
     description = "Johannes";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "libvirtd" "wheel" ];
     packages = with pkgs; [
       pavucontrol
     ];
@@ -133,6 +175,8 @@
     vim
     wget
     curl
+    virt-manager
+    looking-glass-client
   ];
 
   environment.variables.EDITOR = "vim";
