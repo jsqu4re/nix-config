@@ -141,6 +141,8 @@ in
 
       windowrulev2 = [
         # steam
+	"stayfocused, title:^()$,class:^(steam)$"
+	"minsize 1 1, title:^()$,class:^(steam)$"
         # "float, class:(steam), title:(Steam)"
         # "float, class:(steam), title:(Friends List)"
         # "nofocus, class:^(steam)$, title:^()$"
@@ -634,11 +636,11 @@ in
     usbutils # lsusb
 
     # fonts
-    # font-awesome
+    font-awesome
     liberation_ttf
     nerd-fonts.arimo
 
-    #games
+    # games
     # itch
     # steam
   ];
