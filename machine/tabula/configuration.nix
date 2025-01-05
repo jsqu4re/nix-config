@@ -6,7 +6,7 @@
       ./hardware-configuration.nix
     ];
 
-  nix.trustedUsers = [ "jsqu4re" "root" "@wheel" ];
+  nix.settings.trusted-users = [ "jsqu4re" "root" "@wheel" ];
 
   virtualisation.libvirtd.enable = true;
   boot.kernelModules = [ "kvm-amd" "kvm-intel" ];
