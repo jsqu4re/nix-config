@@ -36,6 +36,20 @@ in
 
   networking.hostName = "mutabilix";
 
+# Enable common container config files in /etc/containers
+  virtualisation.containers.enable = true;
+  virtualisation = {
+    docker = {
+      enable = true;
+
+      # Create a `docker` alias for podman, to use it as a drop-in replacement
+      # dockerCompat = true;
+
+      # Required for containers under podman-compose to be able to talk to each other.
+      # defaultNetwork.settings.dns_enabled = true;
+    };
+  };
+
   virtualisation.libvirtd = {
     enable = true;
     qemu.ovmf.enable = true;
@@ -177,6 +191,10 @@ in
     curl
     virt-manager
     looking-glass-client
+    dive # look into docker image layers
+    podman-tui # status of containers in the terminal
+    docker-compose # start group of containers for dev
+    #podman-compose # start group of containers for dev
   ];
 
   environment.variables.EDITOR = "vim";

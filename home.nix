@@ -1,4 +1,5 @@
-{ config, pkgs, ... }:
+{ nixvim }:
+{ config, pkgs, lib, ... }:
 let
   color.background = "2E3440";
   color.lightbackground = "3E4656";
@@ -27,6 +28,9 @@ let
   };
 in 
 {
+
+  imports = [ nixvim.homeManagerModules.nixvim ];
+
   home.username = "jsqu4re";
   home.homeDirectory = "/home/jsqu4re";
 
@@ -104,6 +108,107 @@ in
     };
   };
 
+  # set number relativenumber
+  #     noremap <C-l> :Files<CR>
+  #     noremap <C-f> :Ag<CR>
+  #     noremap <C-s> :w<CR>
+  
+  programs.nixvim = {
+    enable = true;
+    plugins = {
+      mini.enable = true;
+      fzf-lua = {
+        enable = true;
+          # settings = {
+          #   files = {
+          #     color_icons = true;
+          #     file_icons = true;
+          #     find_opts = {
+          #       __raw = "[[-type f -not -path '*.git/objects*' -not -path '*.env*']]";
+          #     };
+          #     multiprocess = true;
+          #     prompt = "Files❯ ";
+          #   };
+          #   winopts = {
+          #     col = 0.3;
+          #     height = 0.4;
+          #     row = 0.99;
+          #     width = 0.93;
+          #   };
+          # };
+      };
+      todo-comments.enable = true;
+      telescope = {
+        enable = true;
+        extensions = {
+          file-browser.enable = true;
+          frecency.enable = true;
+          live-grep-args.enable = true;
+          manix.enable = true;
+          media-files.enable = true;
+          undo.enable = true;
+        };
+      };
+      oil = {
+	      enable = true;
+      };
+      treesitter = {
+        enable = true;
+        settings.indent.enable = true;
+        grammarPackages = pkgs.vimPlugins.nvim-treesitter.passthru.allGrammars;
+      };
+      lsp.enable = true;
+      web-devicons.enable = true;
+    };
+    opts = {
+      number = true;
+      relativenumber = true;
+      numberwidth = 2;
+      ruler = false;
+      smartcase = true;
+      spelllang = lib.mkDefault [ "en_us" ];
+      spell = true;
+      tabstop = 2;
+      shiftwidth = 2;
+      expandtab = true;
+      autoindent = true;
+      softtabstop = 2;
+    };
+    keymaps = [
+    {
+      action = ":FzfLua files<CR>";
+      key = "<C-l>";
+      options = {
+        silent = true;
+      };
+    }
+    {
+      action = ":FzfLua grep<CR><CR>";
+      key = "<C-f>";
+      options = {
+        silent = true;
+      };
+    }
+    {
+      action = ":FzfLua git_";
+      key = "<C-g>";
+      options = {
+        silent = true;
+      };
+    }
+    ];
+    userCommands = {
+      Files.command = ":FzfLua files";
+      Ag.command = "FzfLua grep";
+      Commits.command = "FzfLua git_bcommits";
+      Branches.command = "FzfLua git_branches";
+      History.command = "FzfLua git_commits";
+      GitSt.command = "FzfLua git_status";
+      Jumps.command = "FzfLua jumps";
+      Search.command = "FzfLua live_grep";
+    };
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
@@ -112,7 +217,7 @@ in
       # default variables
       "$mainMod" = "SUPER";
       "$terminal" = "${pkgs.lib.getExe config.programs.alacritty.package}";
-      "$editor" = "${pkgs.lib.getExe pkgs.neovim-unwrapped}";
+      # "$editor" = "${pkgs.lib.getExe pkgs.neovim-unwrapped}";
       "$browser" = "${pkgs.lib.getExe pkgs.floorp}";
       "$launcher" = "${pkgs.lib.getExe pkgs.fuzzel} -b ${color.background}F5 -t ${color.foreground}FF -s ${color.cyan}AF -m ${color.yellow}90 -S ${color.black}FF -M ${color.green}FF -r 40 -B 2 -C ${color.white}F5 -y 30 -P 20";
       "$fileManager" = "${pkgs.lib.getExe pkgs.nemo-with-extensions}";
@@ -581,7 +686,7 @@ in
     nautilus
     # gimp
     # audacity
-    whatsapp-for-linux
+    # whatsapp-for-linux
 
     virt-viewer
     quickemu
@@ -697,23 +802,23 @@ in
     };
   };
 
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
-    vimdiffAlias = true;
-    plugins = with pkgs.vimPlugins; [
-      nvim-lspconfig
-      nvim-treesitter.withAllGrammars
-      plenary-nvim
-      gruvbox-material
-      mini-nvim
-      fzf-vim
-    ];
-    # Use the Nix package search engine to find
-    # even more plugins : https://search.nixos.org/packages
-  };
+  # programs.neovim = {
+  #   enable = true;
+  #   defaultEditor = true;
+  #   viAlias = true;
+  #   vimAlias = true;
+  #   vimdiffAlias = true;
+  #   plugins = with pkgs.vimPlugins; [
+  #     nvim-lspconfig
+  #     nvim-treesitter.withAllGrammars
+  #     plenary-nvim
+  #     gruvbox-material
+  #     mini-nvim
+  #     fzf-vim
+  #   ];
+  #   # Use the Nix package search engine to find
+  #   # even more plugins : https://search.nixos.org/packages
+  # };
 
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage
