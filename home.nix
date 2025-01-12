@@ -118,7 +118,7 @@ in
     plugins = {
       mini.enable = true;
       fzf-lua = {
-        enable = true;
+        enable = false;
       };
       todo-comments.enable = true;
       telescope = {
@@ -159,14 +159,14 @@ in
     };
     keymaps = [
     {
-      action = ":FzfLua files<CR>";
+      action = ":Telescope files<CR>";
       key = "<C-l>";
       options = {
         silent = true;
       };
     }
     {
-      action = ":FzfLua live_grep<CR>";
+      action = ":Telescope live_grep<CR>";
       key = "<C-f>";
       options = {
         silent = true;
@@ -183,15 +183,15 @@ in
     userCommands = {
       Files.command = "Telescope fd";
       Ag.command = "Telescope grep_string";
-      Commits.command = "FzfLua git_bcommits";
+      Commits.command = "Telescope git_bcommits";
       Commands.command = "Telescope command_history";
       Browser.command = "Telescope file_browser";
-      Branches.command = "FzfLua git_branches";
-      History.command = "FzfLua git_commits";
-      GitFiles.command = "FzfLua git_files";
-      GitStatus.command = "FzfLua git_status";
-      Jumps.command = "FzfLua jumps";
-      Search.command = "FzfLua live_grep";
+      Branches.command = "Telescope git_branches";
+      History.command = "Telescope git_commits";
+      GitFiles.command = "Telescope git_files";
+      GitStatus.command = "Telescope git_status";
+      Jumps.command = "Telescope jumps";
+      Search.command = "Telescope live_grep";
     };
   };
 
