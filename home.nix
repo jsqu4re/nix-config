@@ -119,23 +119,6 @@ in
       mini.enable = true;
       fzf-lua = {
         enable = true;
-          # settings = {
-          #   files = {
-          #     color_icons = true;
-          #     file_icons = true;
-          #     find_opts = {
-          #       __raw = "[[-type f -not -path '*.git/objects*' -not -path '*.env*']]";
-          #     };
-          #     multiprocess = true;
-          #     prompt = "Files❯ ";
-          #   };
-          #   winopts = {
-          #     col = 0.3;
-          #     height = 0.4;
-          #     row = 0.99;
-          #     width = 0.93;
-          #   };
-          # };
       };
       todo-comments.enable = true;
       telescope = {
@@ -183,14 +166,14 @@ in
       };
     }
     {
-      action = ":FzfLua grep<CR><CR>";
+      action = ":FzfLua live_grep<CR>";
       key = "<C-f>";
       options = {
         silent = true;
       };
     }
     {
-      action = ":FzfLua git_";
+      action = ":Oil<CR>";
       key = "<C-g>";
       options = {
         silent = true;
@@ -198,12 +181,15 @@ in
     }
     ];
     userCommands = {
-      Files.command = ":FzfLua files";
-      Ag.command = "FzfLua grep";
+      Files.command = "Telescope fd";
+      Ag.command = "Telescope grep_string";
       Commits.command = "FzfLua git_bcommits";
+      Commands.command = "Telescope command_history";
+      Browser.command = "Telescope file_browser";
       Branches.command = "FzfLua git_branches";
       History.command = "FzfLua git_commits";
-      GitSt.command = "FzfLua git_status";
+      GitFiles.command = "FzfLua git_files";
+      GitStatus.command = "FzfLua git_status";
       Jumps.command = "FzfLua jumps";
       Search.command = "FzfLua live_grep";
     };
