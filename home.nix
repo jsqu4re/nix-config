@@ -128,7 +128,16 @@ in
           frecency.enable = true;
           live-grep-args.enable = true;
           manix.enable = true;
-          media-files.enable = true;
+          media-files = {
+            enable = true;
+            dependencies = {
+              chafa.enable = true;
+              epub-thumbnailer.enable = true;
+              ffmpegthumbnailer.enable = true;
+              pdftoppm.enable = true;
+              imageMagick.enable = true;
+            };
+          };
           undo.enable = true;
         };
       };
@@ -202,9 +211,9 @@ in
     settings = {
       # default variables
       "$mainMod" = "SUPER";
-      "$terminal" = "${pkgs.lib.getExe config.programs.alacritty.package}";
-      # "$editor" = "${pkgs.lib.getExe pkgs.neovim-unwrapped}";
-      "$browser" = "${pkgs.lib.getExe pkgs.floorp}";
+      "$terminal" = "${pkgs.lib.getExe config.programs.kitty.package}";
+      "$editor" = "${pkgs.lib.getExe config.programs.nixvim.package}";
+      # "$browser" = "${pkgs.lib.getExe pkgs.zen}";
       "$launcher" = "${pkgs.lib.getExe pkgs.fuzzel} -b ${color.background}F5 -t ${color.foreground}FF -s ${color.cyan}AF -m ${color.yellow}90 -S ${color.black}FF -M ${color.green}FF -r 40 -B 2 -C ${color.white}F5 -y 30 -P 20";
       "$fileManager" = "${pkgs.lib.getExe pkgs.nemo-with-extensions}";
 
@@ -713,6 +722,7 @@ in
     glow # markdown previewer in terminal
     bat
     silver-searcher
+    chafa
 
     htop
     btop  # replacement of htop/nmon
@@ -773,6 +783,8 @@ in
   programs.kitty = {
     enable = true;
   };
+
+  programs.fzf.enable = true;
 
   programs.bash = {
     enable = true;
