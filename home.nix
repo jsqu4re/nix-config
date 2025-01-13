@@ -116,11 +116,25 @@ in
   programs.nixvim = {
     enable = true;
     plugins = {
+      aerial.enable = true;
+      blink-cmp.enable = true;
       mini.enable = true;
       fzf-lua = {
         enable = false;
       };
       todo-comments.enable = true;
+      toggleterm = {
+        enable = true;
+        settings = {
+          direction = "float";
+          float_opts = {
+            border = "curved";
+            height = 30;
+            width = 130;
+          };
+          open_mapping = "[[<c->]]";
+        };
+      };
       telescope = {
         enable = true;
         extensions = {
@@ -188,6 +202,13 @@ in
         silent = true;
       };
     }
+    {
+      action = ":ToggleTerm<CR>";
+      key = "<C-t>";
+      options = {
+        silent = true;
+      };
+    }
     ];
     userCommands = {
       Files.command = "Telescope fd";
@@ -201,6 +222,7 @@ in
       GitStatus.command = "Telescope git_status";
       Jumps.command = "Telescope jumps";
       Search.command = "Telescope live_grep";
+      Term.command = "ToggleTerm";
     };
   };
 
