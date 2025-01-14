@@ -12,19 +12,29 @@ let
   color.magenta = "B48EAD";
   color.cyan = "88C0D0";
   color.white = "E5E9F0";
-  zen-browser = pkgs.writeTextFile {
+  zen = pkgs.writeTextFile {
     name = "zen-browser";
     text = ''
       #! ${pkgs.runtimeShell}
-      ${pkgs.nix}/bin/nix run github:0xc000022070/zen-browser-flake
+      ${pkgs.unixtools.ping}/bin/ping -c 1 github.com > /dev/null 2>&1
+      if [ $? -ne 0 ]
+      then
+        ${pkgs.nix}/bin/nix run github:0xc000022070/zen-browser-flake --offline
+      else
+        ${pkgs.nix}/bin/nix run github:0xc000022070/zen-browser-flake
+      fi
     '';
     executable = true;
     destination = "/bin/zen";
-    # desktopItems = [(pkgs.makeDesktopItem {
-    #   name = "zen";
-    #   desktopName = "Zen Browser";
-    #   exec = "zen-browser";
-    # })];
+  };
+  zen-browser = pkgs.makeDesktopItem {
+    name = "zen";
+    desktopName = "Zen Browser";
+    exec = "${zen}/bin/zen";
+    icon = builtins.fetchurl {
+      url = "https://cdn2.steamgriddb.com/icon/682d409f010b6adafa853f2111b6d49a.png";
+      sha256 = "sha256:05wf4m4nwhilfi4i0mg7d9n6cb8cqgx3kwra4075r69n83723lci";
+    };
   };
 in 
 {
@@ -117,8 +127,14 @@ in
     enable = true;
     plugins = {
       aerial.enable = true;
-      blink-cmp.enable = true;
+      blink-cmp = {
+        enable = true;
+        settings.keymap = {
+          preset = "super-tab";
+        };
+      };
       mini.enable = true;
+      render-markdown.enable = true;
       fzf-lua = {
         enable = false;
       };
@@ -204,7 +220,7 @@ in
     }
     {
       action = ":ToggleTerm<CR>";
-      key = "<C-t>";
+      key = "<C-d>";
       options = {
         silent = true;
       };
@@ -235,7 +251,7 @@ in
       "$mainMod" = "SUPER";
       "$terminal" = "${pkgs.lib.getExe config.programs.kitty.package}";
       "$editor" = "${pkgs.lib.getExe config.programs.nixvim.package}";
-      # "$browser" = "${pkgs.lib.getExe pkgs.zen}";
+      "$browser" = "${pkgs.lib.getExe zen}";
       "$launcher" = "${pkgs.lib.getExe pkgs.fuzzel} -b ${color.background}F5 -t ${color.foreground}FF -s ${color.cyan}AF -m ${color.yellow}90 -S ${color.black}FF -M ${color.green}FF -r 40 -B 2 -C ${color.white}F5 -y 30 -P 20";
       "$fileManager" = "${pkgs.lib.getExe pkgs.nemo-with-extensions}";
 
@@ -691,6 +707,7 @@ in
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
+    zen
     zen-browser
 
     wl-clipboard
